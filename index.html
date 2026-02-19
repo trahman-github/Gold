@@ -17,106 +17,383 @@
     --purple: #a855f7;
     --red: #f87171;
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html, body { width: 100%; overflow-x: hidden; }
-  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 16px; padding-top: 56px; }
-  .container { width: 100%; max-width: 680px; margin: 0 auto; }
-  .settings-btn { position: fixed; top: 12px; right: 12px; background: var(--card); border: 1px solid #2a2a4a; color: var(--muted); border-radius: 10px; padding: 8px 12px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; z-index: 100; white-space: nowrap; }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 16px;
+    padding-top: 56px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ── Settings button ── */
+  .settings-btn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    background: var(--card);
+    border: 1px solid #2a2a4a;
+    color: var(--muted);
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    z-index: 100;
+    white-space: nowrap;
+  }
   .settings-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── Header ── */
   header { text-align: center; margin-bottom: 20px; }
-  header h1 { font-size: clamp(1.4rem, 6vw, 2.2rem); background: linear-gradient(135deg, var(--gold), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 4px; }
+  header h1 {
+    font-size: clamp(1.4rem, 6vw, 2.2rem);
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+  }
   header p { color: var(--muted); font-size: clamp(0.8rem, 3vw, 0.95rem); }
-  .name-badge { display: inline-block; background: linear-gradient(135deg, var(--purple), #7c3aed); color: white; padding: 4px 14px; border-radius: 99px; font-size: clamp(0.75rem, 3vw, 0.85rem); font-weight: 600; margin-top: 8px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
-  .stat-card { background: var(--card); border-radius: 12px; padding: 12px 8px; text-align: center; border: 1px solid #2a2a4a; min-width: 0; }
-  .stat-card .value { font-size: clamp(1.2rem, 5vw, 2rem); font-weight: 700; color: var(--gold); line-height: 1.1; }
-  .stat-card .label { font-size: clamp(0.6rem, 2.2vw, 0.75rem); color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.2; }
-  .month-nav { display: flex; align-items: center; justify-content: space-between; background: var(--card); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px; border: 1px solid #2a2a4a; gap: 8px; }
-  .month-nav h2 { font-size: clamp(0.95rem, 4vw, 1.3rem); color: var(--gold); text-align: center; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .nav-btn { background: var(--card2); border: 1px solid #2a2a4a; color: var(--text); border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: clamp(0.75rem, 3vw, 1rem); transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+  .name-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--purple), #7c3aed);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 99px;
+    font-size: clamp(0.75rem, 3vw, 0.85rem);
+    font-weight: 600;
+    margin-top: 8px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ── Stats ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .stat-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    border: 1px solid #2a2a4a;
+    min-width: 0;
+  }
+  .stat-card .value {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .stat-card .label {
+    font-size: clamp(0.6rem, 2.2vw, 0.75rem);
+    color: var(--muted);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+  }
+
+  /* ── Month nav ── */
+  .month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    border: 1px solid #2a2a4a;
+    gap: 8px;
+  }
+  .month-nav h2 {
+    font-size: clamp(0.95rem, 4vw, 1.3rem);
+    color: var(--gold);
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .nav-btn {
+    background: var(--card2);
+    border: 1px solid #2a2a4a;
+    color: var(--text);
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: clamp(0.75rem, 3vw, 1rem);
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
   .nav-btn:hover { background: var(--purple); border-color: var(--purple); }
-  .calendar { background: var(--card); border-radius: 14px; padding: 14px; border: 1px solid #2a2a4a; width: 100%; overflow: hidden; }
-  .day-headers { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 6px; }
-  .day-header { text-align: center; font-size: clamp(0.6rem, 2.5vw, 0.75rem); color: var(--muted); font-weight: 600; text-transform: uppercase; padding: 3px 0; }
-  .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; width: 100%; }
-  .day-cell { border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid transparent; transition: all 0.15s; cursor: default; user-select: none; position: relative; width: 100%; padding-bottom: 100%; height: 0; overflow: hidden; }
-  .day-cell-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+
+  /* ── Calendar ── */
+  .calendar {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid #2a2a4a;
+    width: 100%;
+    overflow: hidden;
+  }
+  .day-headers {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .day-header {
+    text-align: center;
+    font-size: clamp(0.6rem, 2.5vw, 0.75rem);
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 3px 0;
+  }
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    width: 100%;
+  }
+  .day-cell {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+    cursor: default;
+    user-select: none;
+    /* Use padding-bottom trick for square cells */
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    height: 0;
+    overflow: hidden;
+  }
+  /* Inner content wrapper for square cells */
+  .day-cell-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
   .day-cell.empty { background: transparent; }
-  .day-cell.past, .day-cell.today-cell { background: var(--card2); border-color: #2a2a4a; }
+  .day-cell.past,
+  .day-cell.today-cell { background: var(--card2); border-color: #2a2a4a; }
   .day-cell.future { background: rgba(26,26,46,0.4); border-color: #1e1e3a; opacity: 0.45; }
   .day-cell.today-cell { border-color: var(--purple); box-shadow: 0 0 0 1px var(--purple); }
   .day-cell.has-star { background: linear-gradient(135deg, #2a2010, #1a1a2e); border-color: var(--gold-dark); cursor: pointer; }
   .day-cell.can-earn { border-color: var(--green); cursor: pointer; }
   .day-cell.has-star:hover { transform: scale(1.05); filter: brightness(1.2); }
   .day-cell.can-earn:hover { background: rgba(74,222,128,0.08); transform: scale(1.05); }
-  .day-number { font-size: clamp(0.55rem, 2.2vw, 0.82rem); color: var(--muted); line-height: 1; font-weight: 500; }
+
+  .day-number {
+    font-size: clamp(0.55rem, 2.2vw, 0.82rem);
+    color: var(--muted);
+    line-height: 1;
+    font-weight: 500;
+  }
   .day-cell.today-cell .day-number { color: var(--purple); font-weight: 700; }
   .day-cell.has-star .day-number { color: var(--gold); }
   .day-cell.can-earn .day-number { color: var(--green); }
-  .star-icon { font-size: clamp(0.9rem, 3.8vw, 1.4rem); line-height: 1; filter: drop-shadow(0 0 3px rgba(255,215,0,0.5)); }
-  .earn-icon { font-size: clamp(0.75rem, 3vw, 1.1rem); line-height: 1; opacity: 0.65; }
-  .legend { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; padding: 0 2px; font-size: clamp(0.65rem, 2.5vw, 0.78rem); color: var(--muted); }
+
+  .star-icon {
+    font-size: clamp(0.9rem, 3.8vw, 1.4rem);
+    line-height: 1;
+    filter: drop-shadow(0 0 3px rgba(255,215,0,0.5));
+  }
+  .earn-icon {
+    font-size: clamp(0.75rem, 3vw, 1.1rem);
+    line-height: 1;
+    opacity: 0.65;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    padding: 0 2px;
+    font-size: clamp(0.65rem, 2.5vw, 0.78rem);
+    color: var(--muted);
+  }
   .legend-item { display: flex; align-items: center; gap: 5px; }
   .legend-dot { width: 8px; height: 8px; border-radius: 3px; flex-shrink: 0; }
-  .progress-section { margin-top: 14px; background: var(--card); border-radius: 12px; padding: 14px 16px; border: 1px solid #2a2a4a; }
-  .progress-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: clamp(0.75rem, 3vw, 0.85rem); gap: 8px; }
+
+  /* ── Progress ── */
+  .progress-section {
+    margin-top: 14px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid #2a2a4a;
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: clamp(0.75rem, 3vw, 0.85rem);
+    gap: 8px;
+  }
   .progress-label span:last-child { color: var(--gold); font-weight: 600; white-space: nowrap; }
   .progress-bar { height: 10px; background: var(--card2); border-radius: 99px; overflow: hidden; }
   .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold)); border-radius: 99px; transition: width 0.5s ease; }
 
-  /* Sync status */
-  .sync-bar { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: clamp(0.65rem, 2.5vw, 0.75rem); color: var(--muted); margin-top: 12px; }
-  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
-  .sync-dot.synced { background: var(--green); box-shadow: 0 0 4px var(--green); }
-  .sync-dot.syncing { background: var(--gold); animation: pulse 1s infinite; }
-  .sync-dot.error { background: var(--red); }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: linear-gradient(135deg, #2a2010, #1a1a2e); border: 1px solid var(--gold-dark); color: var(--gold); padding: 12px 22px; border-radius: 12px; font-size: clamp(0.85rem, 3.5vw, 1rem); font-weight: 600; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s; opacity: 0; z-index: 9999; white-space: nowrap; pointer-events: none; max-width: calc(100vw - 32px); text-overflow: ellipsis; overflow: hidden; }
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: linear-gradient(135deg, #2a2010, #1a1a2e);
+    border: 1px solid var(--gold-dark);
+    color: var(--gold);
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    font-weight: 600;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s;
+    opacity: 0;
+    z-index: 9999;
+    white-space: nowrap;
+    pointer-events: none;
+    max-width: calc(100vw - 32px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
   .toast.is-error { border-color: var(--red); color: var(--red); background: linear-gradient(135deg, #2a1010, #1a1a2e); }
 
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.78); z-index: 1000; align-items: center; justify-content: center; padding: 16px; overflow-y: auto; }
+  /* ── Modals ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.78);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    overflow-y: auto;
+  }
   .modal-overlay.show { display: flex; }
-  .modal { background: var(--card); border: 1px solid #2a2a4a; border-radius: 18px; padding: clamp(20px, 6vw, 32px); width: 100%; max-width: 360px; text-align: center; position: relative; margin: auto; }
+
+  .modal {
+    background: var(--card);
+    border: 1px solid #2a2a4a;
+    border-radius: 18px;
+    padding: clamp(20px, 6vw, 32px);
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    position: relative;
+    margin: auto;
+  }
+
   .modal h2 { margin-bottom: 8px; font-size: clamp(1.1rem, 5vw, 1.4rem); }
   .modal h2.gold { color: var(--gold); }
   .modal h2.red { color: var(--red); }
   .modal p { color: var(--muted); margin-bottom: 16px; font-size: clamp(0.8rem, 3.2vw, 0.9rem); line-height: 1.5; }
-  .modal input { width: 100%; background: var(--card2); border: 1px solid #3a3a6a; color: var(--text); border-radius: 10px; padding: 11px 14px; font-size: clamp(0.9rem, 3.5vw, 1rem); outline: none; margin-bottom: 10px; text-align: center; -webkit-appearance: none; }
+
+  .modal input {
+    width: 100%;
+    background: var(--card2);
+    border: 1px solid #3a3a6a;
+    color: var(--text);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    outline: none;
+    margin-bottom: 10px;
+    text-align: center;
+    -webkit-appearance: none;
+  }
   .modal input:focus { border-color: var(--gold); }
-  .modal-btn { width: 100%; border: none; border-radius: 10px; padding: 12px; font-size: clamp(0.9rem, 3.5vw, 1rem); font-weight: 700; cursor: pointer; transition: opacity 0.2s; margin-bottom: 8px; display: block; }
+
+  .modal-btn {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-bottom: 8px;
+    display: block;
+  }
   .modal-btn:last-child { margin-bottom: 0; }
   .modal-btn:hover { opacity: 0.88; }
   .modal-btn.gold { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: #1a1a00; }
   .modal-btn.ghost { background: var(--card2); color: var(--muted); border: 1px solid #2a2a4a; }
+
+  /* ── PIN dots ── */
   .pin-dots { display: flex; justify-content: center; gap: 14px; margin-bottom: 18px; }
   .pin-dot { width: 15px; height: 15px; border-radius: 50%; border: 2px solid var(--muted); background: transparent; transition: all 0.15s; }
   .pin-dot.filled { background: var(--gold); border-color: var(--gold); }
   .pin-dot.dot-error { background: var(--red); border-color: var(--red); }
-  .numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; width: 100%; }
-  .num-btn { background: var(--card2); border: 1px solid #2a2a4a; color: var(--text); border-radius: 10px; padding: 0; height: clamp(44px, 12vw, 58px); font-size: clamp(1rem, 4.5vw, 1.2rem); font-weight: 600; cursor: pointer; transition: all 0.12s; width: 100%; }
+
+  /* ── Numpad ── */
+  .numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+  .num-btn {
+    background: var(--card2);
+    border: 1px solid #2a2a4a;
+    color: var(--text);
+    border-radius: 10px;
+    padding: 0;
+    height: clamp(44px, 12vw, 58px);
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.12s;
+    width: 100%;
+  }
   .num-btn:hover { background: #2a2a4e; border-color: var(--purple); }
   .num-btn:active { transform: scale(0.93); background: var(--purple); }
   .num-btn.del-btn { color: var(--red); font-size: clamp(0.9rem, 3.5vw, 1.1rem); }
   .num-btn.spacer { visibility: hidden; pointer-events: none; }
-  .divider { height: 1px; background: #2a2a4a; margin: 12px 0; }
 
-  /* Loading overlay */
-  .loading-overlay { position: fixed; inset: 0; background: var(--bg); z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
-  .loading-overlay.hidden { display: none; }
-  .spinner { width: 40px; height: 40px; border: 3px solid #2a2a4a; border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-overlay p { color: var(--muted); font-size: 0.9rem; }
+  .divider { height: 1px; background: #2a2a4a; margin: 12px 0; }
 </style>
 </head>
 <body>
-
-<!-- Loading screen -->
-<div class="loading-overlay" id="loadingOverlay">
-  <div class="spinner"></div>
-  <p>Connecting to cloud...</p>
-</div>
 
 <button class="settings-btn" id="settingsBtn">&#9881; Settings</button>
 
@@ -160,11 +437,6 @@
     </div>
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
   </div>
-
-  <div class="sync-bar">
-    <div class="sync-dot" id="syncDot"></div>
-    <span id="syncLabel">Not connected</span>
-  </div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -173,8 +445,8 @@
 <div class="modal-overlay" id="setupModal">
   <div class="modal">
     <h2 class="gold">&#11088; Welcome!</h2>
-    <p>Enter the child's name and set a 4-digit parent PIN. Stars are saved to the cloud and sync across all devices.</p>
-    <input type="text" id="setupName" placeholder="Child's name..." maxlength="30" autocomplete="off" />
+    <p>Enter the Name and set a 4-digit parent PIN. The PIN is needed to add or remove any star.</p>
+    <input type="text" id="setupName" placeholder="Name..." maxlength="30" autocomplete="off" />
     <input type="password" id="setupPin" placeholder="Set 4-digit PIN" maxlength="4" inputmode="numeric" autocomplete="new-password" />
     <input type="password" id="setupPin2" placeholder="Confirm PIN" maxlength="4" inputmode="numeric" autocomplete="new-password" />
     <button class="modal-btn gold" id="setupSaveBtn">Save and Start &#11088;</button>
@@ -187,8 +459,10 @@
     <h2 id="pinTitle" class="gold">Enter PIN</h2>
     <p id="pinDesc">Enter the parent PIN to continue.</p>
     <div class="pin-dots">
-      <div class="pin-dot" id="dot0"></div><div class="pin-dot" id="dot1"></div>
-      <div class="pin-dot" id="dot2"></div><div class="pin-dot" id="dot3"></div>
+      <div class="pin-dot" id="dot0"></div>
+      <div class="pin-dot" id="dot1"></div>
+      <div class="pin-dot" id="dot2"></div>
+      <div class="pin-dot" id="dot3"></div>
     </div>
     <div class="numpad">
       <button class="num-btn" data-digit="1">1</button>
@@ -212,8 +486,8 @@
 <div class="modal-overlay" id="settingsModal">
   <div class="modal">
     <h2 class="gold">&#9881; Settings</h2>
-    <p>Update the name or change your PIN. Leave new PIN fields blank to keep the existing one.</p>
-    <input type="text" id="settingsName" placeholder="Child's name..." maxlength="30" autocomplete="off" />
+    <p>Update the name or change your PIN. Leave new PIN fields blank to keep the existing PIN.</p>
+    <input type="text" id="settingsName" placeholder="Name..." maxlength="30" autocomplete="off" />
     <div class="divider"></div>
     <p style="margin-bottom:10px;font-size:0.8rem">Change PIN (optional)</p>
     <input type="password" id="settingsNewPin" placeholder="New 4-digit PIN" maxlength="4" inputmode="numeric" autocomplete="new-password" />
@@ -223,103 +497,26 @@
   </div>
 </div>
 
-<!-- Firebase SDK v9 compat (works in plain HTML, no bundler needed) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
 <script>
 (function () {
   'use strict';
 
-  // ================================================================
-  // STEP 1: PASTE YOUR FIREBASE CONFIG HERE
-  // Get this from: Firebase Console > Project Settings > Your Apps
-  // ================================================================
-  var firebaseConfig = {
-    apiKey:            "PASTE_YOUR_API_KEY_HERE",
-    authDomain:        "PASTE_YOUR_AUTH_DOMAIN_HERE",
-    projectId:         "PASTE_YOUR_PROJECT_ID_HERE",
-    storageBucket:     "PASTE_YOUR_STORAGE_BUCKET_HERE",
-    messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID_HERE",
-    appId:             "PASTE_YOUR_APP_ID_HERE"
-  };
-  // ================================================================
+  var DB_KEY = 'goldStarTracker_v2';
+  var db = { name: null, pin: null, stars: {} };
 
-  // Local settings key (name + pin stored locally, stars in Firestore)
-  var LOCAL_KEY = 'goldStarTracker_settings';
-  var settings = { name: null, pin: null };
-
-  function loadSettings() {
-    try { var r = localStorage.getItem(LOCAL_KEY); if (r) settings = JSON.parse(r); } catch(e) {}
+  function loadDB() {
+    try { var r = localStorage.getItem(DB_KEY); if (r) db = JSON.parse(r); } catch(e) {}
   }
-  function saveSettings() {
-    try { localStorage.setItem(LOCAL_KEY, JSON.stringify(settings)); } catch(e) {}
+  function saveDB() {
+    try { localStorage.setItem(DB_KEY, JSON.stringify(db)); } catch(e) {}
   }
   function hashPin(pin) {
     var h = 5381;
     for (var i = 0; i < pin.length; i++) { h = ((h << 5) + h) + pin.charCodeAt(i); h = h & h; }
     return h.toString(16) + ':' + pin.length;
   }
-  function checkPin(pin) { return settings.pin === hashPin(pin); }
+  function checkPin(pin) { return db.pin === hashPin(pin); }
 
-  // ── Firebase + Firestore ─────────────────────────────────────────
-  var app, db, starsCol;
-  var starsCache = {}; // local mirror of Firestore data
-
-  function initFirebase() {
-    try {
-      app = firebase.initializeApp(firebaseConfig);
-      db  = firebase.firestore();
-      starsCol = db.collection('stars');
-      setSyncStatus('syncing', 'Connecting...');
-
-      // Real-time listener — updates calendar whenever Firestore changes
-      starsCol.onSnapshot(function(snapshot) {
-        starsCache = {};
-        snapshot.forEach(function(doc) { starsCache[doc.id] = true; });
-        setSyncStatus('synced', 'Synced to cloud');
-        renderCalendar();
-        hideLoading();
-      }, function(err) {
-        setSyncStatus('error', 'Sync error — check connection');
-        showToast('Cloud sync error', true);
-        hideLoading();
-      });
-
-    } catch(err) {
-      setSyncStatus('error', 'Firebase not configured');
-      hideLoading();
-      showToast('Firebase config missing — see index.html', true);
-    }
-  }
-
-  function addStar(key) {
-    setSyncStatus('syncing', 'Saving...');
-    starsCol.doc(key).set({ date: key, earned: true, addedAt: new Date().toISOString() })
-      .then(function() { showToast('\u2B50 Gold star awarded!', false); })
-      .catch(function() { showToast('Save failed — check connection', true); setSyncStatus('error', 'Save failed'); });
-  }
-
-  function removeStar(key) {
-    setSyncStatus('syncing', 'Removing...');
-    starsCol.doc(key).delete()
-      .then(function() { showToast('Star removed', false); })
-      .catch(function() { showToast('Remove failed — check connection', true); setSyncStatus('error', 'Remove failed'); });
-  }
-
-  // ── Sync status indicator ────────────────────────────────────────
-  function setSyncStatus(state, label) {
-    var dot = document.getElementById('syncDot');
-    var lbl = document.getElementById('syncLabel');
-    dot.className = 'sync-dot ' + state;
-    lbl.textContent = label;
-  }
-
-  function hideLoading() {
-    document.getElementById('loadingOverlay').classList.add('hidden');
-  }
-
-  // ── State ────────────────────────────────────────────────────────
   var now = new Date();
   var viewYear = now.getFullYear();
   var viewMonth = now.getMonth();
@@ -342,7 +539,7 @@
 
   function renderHeader() {
     var b = document.getElementById('nameBadge');
-    if (settings.name) { b.textContent = settings.name + "'s Tracker"; b.style.display = 'inline-block'; }
+    if (db.name) { b.textContent = db.name + "'s Tracker"; b.style.display = 'inline-block'; }
   }
 
   function renderCalendar() {
@@ -374,14 +571,16 @@
       var key = dateKey(viewYear, viewMonth, d);
       var cell = document.createElement('div');
       cell.className = 'day-cell';
+
       var inner = document.createElement('div');
       inner.className = 'day-cell-inner';
+
       var numEl = document.createElement('div');
       numEl.className = 'day-number';
       numEl.textContent = d;
       inner.appendChild(numEl);
 
-      var hasStar = !!starsCache[key];
+      var hasStar = !!db.stars[key];
       var isToday = (key === today);
       var isFuture = (key > today);
 
@@ -414,7 +613,7 @@
 
     document.getElementById('statEarned').textContent = starsThisMonth;
     document.getElementById('statDays').textContent = daysElapsed;
-    document.getElementById('statTotal').textContent = Object.keys(starsCache).length;
+    document.getElementById('statTotal').textContent = Object.keys(db.stars).length;
     var pct = daysElapsed > 0 ? Math.round((starsThisMonth / daysElapsed) * 100) : 0;
     document.getElementById('progressFill').style.width = pct + '%';
     document.getElementById('progressText').textContent =
@@ -435,9 +634,13 @@
     updateDots(false);
     var title = document.getElementById('pinTitle');
     var desc  = document.getElementById('pinDesc');
-    if (type === 'remove') { title.textContent = 'Remove Star?'; title.className = 'red'; }
-    else if (type === 'settings') { title.textContent = 'Verify PIN'; title.className = 'gold'; }
-    else { title.textContent = 'Award Star?'; title.className = 'gold'; }
+    if (type === 'remove') {
+      title.textContent = 'Remove Star?'; title.className = 'red';
+    } else if (type === 'settings') {
+      title.textContent = 'Verify PIN'; title.className = 'gold';
+    } else {
+      title.textContent = 'Award Star?'; title.className = 'gold';
+    }
     if (type !== 'settings') {
       var dt = new Date(key + 'T12:00:00');
       var lbl = dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -479,22 +682,28 @@
     }
     var action = pinAction;
     closePinModal();
-    if (action.type === 'add') { addStar(action.key); }
-    else if (action.type === 'remove') { removeStar(action.key); }
-    else if (action.type === 'settings') { openSettingsPanel(); }
+    if (action.type === 'add') {
+      db.stars[action.key] = true; saveDB(); renderCalendar();
+      showToast('\u2B50 Gold star awarded!', false);
+    } else if (action.type === 'remove') {
+      delete db.stars[action.key]; saveDB(); renderCalendar();
+      showToast('Star removed', false);
+    } else if (action.type === 'settings') {
+      openSettingsPanel();
+    }
   }
 
   function openSettingsPanel() {
-    document.getElementById('settingsName').value = settings.name || '';
+    document.getElementById('settingsName').value = db.name || '';
     document.getElementById('settingsNewPin').value = '';
     document.getElementById('settingsNewPin2').value = '';
     document.getElementById('settingsModal').classList.add('show');
     setTimeout(function(){ document.getElementById('settingsName').focus(); }, 100);
   }
 
-  function closeSettingsPanel() { document.getElementById('settingsModal').classList.remove('show'); }
+  function closeSettings() { document.getElementById('settingsModal').classList.remove('show'); }
 
-  function doSaveSettings() {
+  function saveSettings() {
     var name = document.getElementById('settingsName').value.trim();
     var np1  = document.getElementById('settingsNewPin').value.trim();
     var np2  = document.getElementById('settingsNewPin2').value.trim();
@@ -502,12 +711,9 @@
     if (np1 || np2) {
       if (np1.length !== 4 || isNaN(Number(np1))) { showToast('New PIN must be 4 digits', true); return; }
       if (np1 !== np2) { showToast('New PINs do not match', true); return; }
-      settings.pin = hashPin(np1);
+      db.pin = hashPin(np1);
     }
-    settings.name = name;
-    saveSettings();
-    renderHeader();
-    closeSettingsPanel();
+    db.name = name; saveDB(); renderHeader(); renderCalendar(); closeSettings();
     showToast('Settings saved!', false);
   }
 
@@ -518,11 +724,9 @@
     if (!name) { showToast('Please enter a name', true); return; }
     if (pin.length !== 4 || isNaN(Number(pin))) { showToast('PIN must be exactly 4 digits', true); return; }
     if (pin !== pin2) { showToast('PINs do not match', true); return; }
-    settings.name = name;
-    settings.pin  = hashPin(pin);
-    saveSettings();
+    db.name = name; db.pin = hashPin(pin); saveDB();
     document.getElementById('setupModal').classList.remove('show');
-    renderHeader();
+    renderHeader(); renderCalendar();
   }
 
   function wireButtons() {
@@ -537,8 +741,8 @@
     document.getElementById('delBtn').addEventListener('click', pinBackspace);
     document.getElementById('pinCancelBtn').addEventListener('click', closePinModal);
     document.getElementById('settingsBtn').addEventListener('click', function(){ openPinModal('settings', null); });
-    document.getElementById('settingsSaveBtn').addEventListener('click', doSaveSettings);
-    document.getElementById('settingsCancelBtn').addEventListener('click', closeSettingsPanel);
+    document.getElementById('settingsSaveBtn').addEventListener('click', saveSettings);
+    document.getElementById('settingsCancelBtn').addEventListener('click', closeSettings);
     document.getElementById('prevBtn').addEventListener('click', function(){ changeMonth(-1); });
     document.getElementById('nextBtn').addEventListener('click', function(){ changeMonth(+1); });
     document.addEventListener('keydown', function(e) {
@@ -550,15 +754,15 @@
   }
 
   function init() {
-    loadSettings();
-    wireButtons();
-    if (!settings.name || !settings.pin) {
-      hideLoading();
+    loadDB();
+    if (!db.name || !db.pin) {
       document.getElementById('setupModal').classList.add('show');
       setTimeout(function(){ document.getElementById('setupName').focus(); }, 100);
+    } else {
+      renderHeader();
+      renderCalendar();
     }
-    renderHeader();
-    initFirebase();
+    wireButtons();
   }
 
   if (document.readyState === 'loading') {
